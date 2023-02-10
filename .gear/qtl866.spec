@@ -8,9 +8,18 @@ Summary: GUI driver for minipro EPROM/Device programmer software
 License: %gpl3only
 
 BuildRequires(pre): rpm-build-licenses
+BuildRequires(pre): rpm-macros-cmake
+
 Group: Other
 Url: https://github.com/wd5gnr/qtl866
 Source0: %name-%version.tar
+
+BuildRequires: cmake
+BuildRequires: cmake-modules
+BuildRequires: gcc-c++
+BuildRequires: qt5-base-devel
+BuildRequires: qt5-declarative-devel
+BuildRequires: qt5-tools-devel
 
 %description
 GUI driver for minipro EPROM/Device programmer software
@@ -22,6 +31,9 @@ GUI driver for minipro EPROM/Device programmer software
 %cmake
 %install
 %cmakeinstall_std
+install -v -p -m 655 -D ./binhexedit %buildroot%_bindir/binhexedit
+install -v -p -m 655 -D ./miniprohex %buildroot%_bindir/miniprohex
+
 %files
 %_bindir/qtl866
 %_bindir/binhexedit
