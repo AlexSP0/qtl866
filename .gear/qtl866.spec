@@ -1,11 +1,13 @@
 %define unpackaged_files_terminate_build 1
 
-Name: qtl866-utils
+Name: qtl866
 Version: 1.0.0
 Release: alt1
 
 Summary: GUI driver for minipro EPROM/Device programmer software
-License: %gpl3only
+License: %gpl3plus
+
+Requires: minipro
 
 BuildRequires(pre): rpm-build-licenses
 BuildRequires(pre): rpm-macros-cmake
@@ -32,12 +34,10 @@ GUI driver for minipro EPROM/Device programmer software
 %install
 %cmakeinstall_std
 install -v -p -m 655 -D ./binhexedit %buildroot%_bindir/binhexedit
-install -v -p -m 655 -D ./miniprohex %buildroot%_bindir/miniprohex
 
 %files
 %_bindir/qtl866
 %_bindir/binhexedit
-%_bindir/miniprohex
 
 %changelog
 * Tue Feb 10 2023 Aleksey Saprunov <sav@altlinux.org> 1.0.0-alt1
